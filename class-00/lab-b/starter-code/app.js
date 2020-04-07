@@ -135,11 +135,11 @@ let message = name => `Hello,` + ` ${name}!` ;
 console.log(message('Allie'));
 
 
-let Student = (name, age, hometown) => ({
-  name : name,
-  age : age,
-  hometown : hometown,
-});
+let Student = function(name, age, hometown) {
+  this.name = name;
+  this.age = age;
+  this.hometown = hometown;
+};
 
 let joe = new Student('Joe', 'Schmoe', 100);
 
@@ -157,7 +157,7 @@ Student.prototype.greeting = function() {
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
-// console.log(joe.greeting());
+console.log(joe.greeting());
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
@@ -168,28 +168,28 @@ Student.courseName = function() {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(Student.courseName());
+console.log(Student.courseName());
 
 
 
 // STEP 11
 // How do arrow functions affect constructor functions?
-Student.prototype.scope = function() {
+Student.prototype.scope = () => {
   console.log(this);
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(joe.scope());
+console.log(joe.scope());
 
 Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(joe.scopeArrow());
+console.log(joe.scopeArrow());
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-//
+//this when used inside a constructor function is referring to the object it is in
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+//this when used with an arrow function is referring to the parent of the element, which is the browser window. 
 // 3. Explain why "this" is different when an arrow function is used.
-//
+//this is different when using an arrow function because it is not an object. 
