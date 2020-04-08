@@ -134,4 +134,3 @@ if(localStorage.busmall){
 }
 
 displayPics();
-
